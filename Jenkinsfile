@@ -58,7 +58,7 @@ pipeline {
                         -Dsonar.sources=. ^
                         -Dsonar.python.coverage.reportPaths=${COVERAGE_REPORT} ^
                         -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.token=%SONAR_TOKEN%
+                        -Dsonar.token=sqp_6d69898c79fd92cc902f17dc10ab54f5305fddc4
                         
                         '''
                     }
