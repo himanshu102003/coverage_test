@@ -2,7 +2,7 @@ pipeline {
     agent any
 
     environment {
-        PYTHON_ENV = 'python'  // 'python' should point to Python 3.x in the PATH on Windows
+        PYTHON_ENV = 'C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'  // 'python' should point to Python 3.x in the PATH on Windows
         COVERAGE_REPORT = 'coverage.xml'
     }
 
