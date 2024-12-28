@@ -45,6 +45,9 @@ pipeline {
         }
 
         stage('SonarQube Analysis') {
+            environment {
+                SONAR_TOKEN = credentials('sonarqube-token') // Accessing the SonarQube token stored in Jenkins credentials
+            }
             steps {
                 script {
                     // Run SonarQube scanner
@@ -55,7 +58,7 @@ pipeline {
                         -Dsonar.sources=. ^
                         -Dsonar.python.coverage.reportPaths=${COVERAGE_REPORT} ^
                         -Dsonar.host.url=http://localhost:9000 ^
-                        -Dsonar.token=sqp_6d69898c79fd92cc902f17dc10ab54f5305fddc4
+                        -Dsonar.token=%SONAR_TOKEN%
                         
                         '''
                     }
@@ -67,6 +70,7 @@ pipeline {
             steps {
                 // Ensure the coverage report exists before publishing
                 bat 'dir ${COVERAGE_REPORT}'
+                bat 'type ${COVERAGE_REPORT}'
 
                 // Publish the coverage report using the SonarQube plugin (already handled in the SonarQube stage)
                 // If you wish to publish using other methods like Cobertura or JaCoCo, you can use:
