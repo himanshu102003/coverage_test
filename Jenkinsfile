@@ -3,7 +3,7 @@ pipeline {
 
     environment {
         PATH = 'C:\\Users\\himan\\Downloads\\sonar-scanner-cli-6.2.1.4610-windows-x64\\sonar-scanner-6.2.1.4610-windows-x64\\bin;C:\\Windows\\System32;C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313;C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313\\Scripts'
-        PYTHON_ENV = 'python'  // 'python' should point to Python 3.x in the PATH on Windows
+        PYTHON_ENV = 'python'  // Python 3.x should be in the PATH on Windows
         COVERAGE_REPORT = 'coverage.xml'
     }
 
@@ -19,10 +19,10 @@ pipeline {
             steps {
                 // Set up Python environment and install dependencies
                 script {
-                    bat 'echo %PATH%'
+                    bat 'echo %PATH%' // Print the PATH for verification
                     bat '''
                     python -m venv venv
-                    venv\\Scripts\\activate
+                    call venv\\Scripts\\activate
                     pip install -r requirements.txt
                     '''
                 }
@@ -34,7 +34,7 @@ pipeline {
                 // Run the unit tests and collect coverage data
                 script {
                     bat '''
-                    venv\\Scripts\\activate
+                    call venv\\Scripts\\activate
                     coverage run -m unittest discover
                     coverage report
                     coverage xml -o ${COVERAGE_REPORT}
@@ -46,9 +46,7 @@ pipeline {
         stage('Publish Coverage Report') {
             steps {
                 // Publish the coverage report to Jenkins
-                script {
-                    junit '**/coverage.xml'  // Adjust the path if your test results are elsewhere
-                }
+                junit '**/coverage.xml'  // Adjust the path if your test results are elsewhere
             }
         }
     }
