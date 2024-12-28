@@ -53,7 +53,7 @@ pipeline {
                         sonar-scanner -Dsonar.projectKey=sonar-coverage-jenkins ^
                         -Dsonar.projectName=sonar-coverage-jenkins ^
                         -Dsonar.sources=. ^
-                        -Dsonar.python.coverage.reportPaths=coverage.xml ^
+                        -Dsonar.python.coverage.reportPaths=${COVERAGE_REPORT} ^
                         -Dsonar.host.url=http://localhost:9000 ^
                         -Dsonar.token=sqp_6d69898c79fd92cc902f17dc10ab54f5305fddc4
                         
