@@ -52,10 +52,9 @@ pipeline {
     }
 
     post {
-        always {
+        success {
             // Clean up after the pipeline execution
-            echo 'Cleaning up...'
-            cleanWs()
+            echo "successfully done'
         }
     }
 }
