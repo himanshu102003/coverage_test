@@ -45,8 +45,11 @@ pipeline {
 
         stage('Publish Coverage Report') {
             steps {
-                // Publish the coverage report to Jenkins
-                junit '**/coverage.xml'  // Adjust the path if your test results are elsewhere
+                // Ensure the coverage report exists before publishing
+                bat 'dir ${COVERAGE_REPORT}'
+
+                // Publish the coverage report using the Cobertura or JaCoCo plugin
+                publishCoverage adapters: [jacocoAdapter('coverage.xml')]
             }
         }
     }
