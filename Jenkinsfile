@@ -18,6 +18,7 @@ pipeline {
             steps {
                 // Set up Python environment and install dependencies
                 script {
+                    bat 'echo %PATH%'
                     bat '''
                     python -m venv venv
                     venv\\Scripts\\activate
