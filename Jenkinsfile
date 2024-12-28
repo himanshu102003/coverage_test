@@ -47,7 +47,7 @@ pipeline {
             steps {
                 // Publish the coverage report to Jenkins
                 script {
-                    junit '**/test-*.xml'  // Adjust the path if your test results are elsewhere
+                    junit '**/coverage.xml'  // Adjust the path if your test results are elsewhere
                 }
             }
         }
