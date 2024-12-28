@@ -2,8 +2,8 @@ pipeline {
     agent any
 
     environment {
-        PATH = 'C:\\Users\\himan\\Downloads\\sonar-scanner-cli-6.2.1.4610-windows-x64\\sonar-scanner-6.2.1.4610-windows-x64\\bin;C:\\Windows\\System32'
-        PYTHON_ENV = 'C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313;C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313\\Scripts;C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313\\python.exe'  // 'python' should point to Python 3.x in the PATH on Windows
+        PATH = 'C:\\Users\\himan\\Downloads\\sonar-scanner-cli-6.2.1.4610-windows-x64\\sonar-scanner-6.2.1.4610-windows-x64\\bin;C:\\Windows\\System32;C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313;C:\\Users\\himan\\AppData\\Local\\Programs\\Python\\Python313\\Scripts'
+        PYTHON_ENV = 'python'  // 'python' should point to Python 3.x in the PATH on Windows
         COVERAGE_REPORT = 'coverage.xml'
     }
 
