@@ -51,10 +51,15 @@ pipeline {
         }
     }
 
-    post {
+   post {
         success {
-            // Clean up after the pipeline execution
-            echo "successfully done'
+            echo 'Pipeline completed successfully'
+        }
+        failure {
+            echo 'Pipeline failed'
+        }
+        always {
+            echo 'This runs regardless of the result.'
         }
     }
 }
